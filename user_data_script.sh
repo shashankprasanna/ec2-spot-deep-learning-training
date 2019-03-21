@@ -43,11 +43,11 @@ if [ $VOLUME_ID ]; then
 
 		# Get training code
 		git clone https://github.com/shashankprasanna/ec2-spot-deep-learning-training.git
-		chown -R ubuntu: playground
-		cd playground/
+		chown -R ubuntu: ec2-spot-deep-learning-training
+		cd ec2-spot-deep-learning-training/
 
 		# Initiate training using the tensorflow_36 conda environment
-		sudo -H -u ubuntu bash -c "source /home/ubuntu/anaconda3/bin/activate tensorflow_p36; python tf_checkpoint_resume.py"
+		sudo -H -u ubuntu bash -c "source /home/ubuntu/anaconda3/bin/activate tensorflow_p36; python ec2_spot_keras_training.py"
 fi
 
 # After training, clean up by cancelling spot requests and terminating itself
