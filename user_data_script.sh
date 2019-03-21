@@ -42,7 +42,7 @@ if [ $VOLUME_ID ]; then
 		cd /home/ubuntu/
 
 		# Get training code
-		git clone https://github.com/shashankprasanna/playground.git
+		git clone https://github.com/shashankprasanna/ec2-spot-deep-learning-training.git
 		chown -R ubuntu: playground
 		cd playground/
 
