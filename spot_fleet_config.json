@@ -1,0 +1,41 @@
+{
+  "TargetCapacity": 1,
+  "IamFleetRole": "arn:aws:iam::453691756499:role/DL-Training-Spot-Fleet-Role",
+  "LaunchSpecifications": [
+      {
+          "ImageId": "ami-0027dfad6168539c7",
+          "KeyName": "shshnkp-oregon",
+          "SecurityGroups": [
+              {
+                  "GroupId": "sg-0ffc82a612622ebcd"
+              }
+          ],
+          "InstanceType": "p3.2xlarge",
+          "Placement": {
+              "AvailabilityZone": "us-west-2a, us-west-2b, us-west-2c, us-west-2d"
+          },
+		  "UserData": "base64_encoded_bash_script",
+          "IamInstanceProfile": {
+              "Arn": "arn:aws:iam::453691756499:instance-profile/DL-Training"
+          }
+      },
+	{
+          "ImageId": "ami-0027dfad6168539c7",
+          "KeyName": "shshnkp-oregon",
+          "SecurityGroups": [
+              {
+                  "GroupId": "sg-0ffc82a612622ebcd"
+              }
+          ],
+          "InstanceType": "p2.xlarge",
+          "Placement": {
+              "AvailabilityZone": "us-west-2a, us-west-2b, us-west-2c, us-west-2d"
+          },
+		  "UserData": "base64_encoded_bash_script",
+          "IamInstanceProfile": {
+              "Arn": "arn:aws:iam::453691756499:instance-profile/DL-Training"
+          }
+      }
+
+  ]
+}

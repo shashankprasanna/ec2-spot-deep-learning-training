@@ -1,3 +1,7 @@
+.idea/
+.spot_fleet_config.json.swp
+.user_data_script.sh.swp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
