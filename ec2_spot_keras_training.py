@@ -8,6 +8,8 @@ from keras.models import Model, load_model
 from download_cifar10 import load_data
 import shutil
 import datetime
+import time
+import requests
 
 
 #%% Load and prepare datasets
@@ -73,7 +75,14 @@ def define_callbacks(volume_mount_dir, checkpoint_path, checkpoint_names, today_
     epoch_results_callback = CSVLogger(os.path.join(volume_mount_dir, 'training_log_{}.csv'.format(today_date)),
                                        append=True)
 
-    callbacks = [checkpoint_callback, epoch_results_callback]
+    class SpotTermination(keras.callbacks.Callback):
+        def on_batch_begin(self, batch, logs={}):
+            status_code = requests.get("http://169.254.169.254/latest/meta-data/spot/instance-action").status_code
+            if status_code != 404:
+                time.sleep(150)
+    spot_termination_callback = SpotTermination()
+
+    callbacks = [checkpoint_callback, epoch_results_callback, spot_termination_callback]
     return callbacks
 
 
