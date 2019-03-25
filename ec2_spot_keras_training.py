@@ -88,7 +88,7 @@ def define_callbacks(volume_mount_dir, checkpoint_path, checkpoint_names, today_
                 time.sleep(150)
     spot_termination_callback = SpotTermination()
 
-    callbacks = [checkpoint_callback, epoch_results_callback, spot_termination_callback]
+    callbacks = [spot_termination_callback, checkpoint_callback, epoch_results_callback]
     return callbacks
 
 
