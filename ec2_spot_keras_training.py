@@ -80,9 +80,11 @@ def define_callbacks(volume_mount_dir, checkpoint_path, checkpoint_names, today_
         def on_batch_begin(self, batch, logs={}):
             status_request = requests.get("http://169.254.169.254/latest/meta-data/spot/instance-action")
             status_code = status_request.status_code
+            print(status_request)
             print(status_code)
             if status_code != 404:
                 print(status_request)
+                print(status_code)
                 time.sleep(150)
     spot_termination_callback = SpotTermination()
 
